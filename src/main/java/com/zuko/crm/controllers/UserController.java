@@ -3,7 +3,6 @@ package com.zuko.crm.controllers;
 import com.zuko.crm.dto.request.CreateUserRequestDTO;
 import com.zuko.crm.dto.request.UpdateUserRequestDTO;
 import com.zuko.crm.entities.UserEntity;
-import com.zuko.crm.repositorys.UserRepository;
 import com.zuko.crm.services.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
