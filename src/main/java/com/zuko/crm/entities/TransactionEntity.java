@@ -8,7 +8,6 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity(name = "tb_transactions")
 public class TransactionEntity {
@@ -18,7 +17,7 @@ public class TransactionEntity {
     @Column(name ="account_id")
     private long accountId;
 
-    private Type type;
+    private CategoryEntity.Type type;
 
     private String description;
 
@@ -48,7 +47,4 @@ public class TransactionEntity {
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
 
-    public enum Type {
-        INCOME, EXPENSE
-    }
 }
