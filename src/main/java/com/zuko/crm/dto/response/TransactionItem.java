@@ -1,6 +1,7 @@
 package com.zuko.crm.dto.response;
 
 import com.zuko.crm.entities.CategoryEntity;
+import com.zuko.crm.entities.TransactionEntity;
 import com.zuko.crm.entities.UserEntity;
 
 import java.math.BigDecimal;
@@ -16,6 +17,7 @@ public record TransactionItem(
         LocalDateTime updatedAt,
         LocalDate transactionDate,
         UserEntity user,
-        CategoryEntity category
+        CategoryEntity category,
+        TransactionEntity.StatusTransaction statusTransaction
 ) {
 }

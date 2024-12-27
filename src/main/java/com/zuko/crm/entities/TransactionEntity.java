@@ -19,6 +19,8 @@ public class TransactionEntity {
 
     private CategoryEntity.Type type;
 
+    private StatusTransaction statusTransaction = StatusTransaction.PAID;
+
     private String description;
 
     @Column(precision = 14, scale = 4, nullable = false)
@@ -29,7 +31,7 @@ public class TransactionEntity {
 
     @Column(name = "is_active")
     @ColumnDefault("true")
-    private Boolean isActive;
+    private Boolean isActive = true;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
@@ -46,6 +48,18 @@ public class TransactionEntity {
     @UpdateTimestamp
     @Column(name = "updated_at")
     private LocalDateTime updatedAt;
+
+    public StatusTransaction getStatusTransaction() {
+        return statusTransaction;
+    }
+
+    public void setStatusTransaction(StatusTransaction statusTransaction) {
+        this.statusTransaction = statusTransaction;
+    }
+
+    public enum StatusTransaction {
+        PAID, PENDING
+    }
 
 
     public long getAccountId() {
