@@ -1,11 +1,12 @@
 package com.zuko.crm.controllers;
 
+import com.zuko.crm.dto.request.StoreTransactionRequestDTO;
+import com.zuko.crm.dto.response.TransactionListResponseDTO;
+import com.zuko.crm.entities.TransactionEntity;
 import com.zuko.crm.services.TransactionService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationToken;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("transactions")
@@ -18,16 +19,21 @@ public class TransactionController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<> findAll(){
-
+    public ResponseEntity<TransactionListResponseDTO> findAll() {
+        var output = this.transactionService.findAll();
+        return ResponseEntity.ok(output);
     }
 
-    public ResponseEntity<> findOne(){
-
+    @GetMapping("/${id}")
+    public ResponseEntity<TransactionEntity> findOne(@PathVariable("id") long id) {
+        var output = this.transactionService.findOneById(id);
+        return ResponseEntity.ok(output);
     }
 
-    public ResponseEntity<> stode(@RequestBody ){
-
+    @PostMapping("/")
+    public ResponseEntity<TransactionEntity> store(@RequestBody StoreTransactionRequestDTO dto, JwtAuthenticationToken token) {
+        var output = this.transactionService.store(dto, token);
+        return ResponseEntity.ok(output);
     }
 
 }
