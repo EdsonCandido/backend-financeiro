@@ -19,8 +19,11 @@ public class TransactionController {
     }
 
     @GetMapping("/")
-    public ResponseEntity<TransactionListResponseDTO> findAll() {
-        var output = this.transactionService.findAll();
+    public ResponseEntity<TransactionListResponseDTO> findAll(
+            @RequestParam(value="page", defaultValue = "0") int page,
+            @RequestParam(value = "pageSize", defaultValue = "10") int pageSize
+    ) {
+        var output = this.transactionService.findAll(page,pageSize);
         return ResponseEntity.ok(output);
     }
 
