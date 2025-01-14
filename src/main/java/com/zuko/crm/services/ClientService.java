@@ -35,6 +35,7 @@ public class ClientService {
 
         client.setCorporateReason(dto.corporateReason());
         client.setFantasyName(dto.fantasyName());
+        client.setCpfCnpj(dto.cpfCnpj());
         this.clientRepository.save(client);
         return client;
     }

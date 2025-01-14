@@ -15,6 +15,9 @@ public class ClientEntity {
     @Column(name = "client_id")
     private Long clientId ;
 
+    @Column(name = "cpf_cnpj")
+    private String cpfCnpj;
+
     @Column(name = "corporate_reason")
     private String corporateReason;
 
@@ -79,5 +82,13 @@ public class ClientEntity {
 
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
+    }
+
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 }
