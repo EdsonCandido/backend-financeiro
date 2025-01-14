@@ -35,11 +35,18 @@ public class ClientService {
 
         client.setCorporateReason(dto.corporateReason());
         client.setFantasyName(dto.fantasyName());
-
         this.clientRepository.save(client);
-
         return client;
+    }
 
+    public ClientEntity changeActive(long clientId){
+        var exist = this.findOne(clientId);
+
+        exist.setActive(!exist.getActive());
+
+        this.clientRepository.save(exist);
+
+        return exist;
     }
 
 }
