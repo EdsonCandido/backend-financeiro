@@ -1,5 +1,6 @@
 package com.zuko.crm.services;
 
+import com.zuko.crm.dto.request.CreateClientRequestDTO;
 import com.zuko.crm.entities.ClientEntity;
 import com.zuko.crm.repositorys.ClientRepository;
 import org.springframework.stereotype.Service;
@@ -21,7 +22,23 @@ public class ClientService {
 
         return exist.get();
     }
-    public ClientEntity store(){
+    public ClientEntity store(CreateClientRequestDTO dto){
+        if(dto == null) throw  new RuntimeException("Dados incompletos");
+
+        ClientEntity client = null;
+
+        if(dto.clientId()!= null){
+            client = this.findOne(dto.clientId());
+        }else{
+            client = new ClientEntity();
+        }
+
+        client.setCorporateReason(dto.corporateReason());
+        client.setFantasyName(dto.fantasyName());
+
+        this.clientRepository.save(client);
+
+        return client;
 
     }
 
