@@ -15,7 +15,11 @@ public class ClientService {
 
 
     public ClientEntity findOne(long id){
+        var exist = this.clientRepository.findById(id);
 
+        if(exist.isEmpty()) throw new RuntimeException("Não encontrado");
+
+        return exist.get();
     }
     public ClientEntity store(){
 
