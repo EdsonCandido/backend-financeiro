@@ -12,8 +12,7 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("transactions")
 public class TransactionController {
     private final TransactionService transactionService;
-
-
+    
     public TransactionController(TransactionService transactionService) {
         this.transactionService = transactionService;
     }
@@ -38,5 +37,4 @@ public class TransactionController {
         var output = this.transactionService.store(dto, token);
         return ResponseEntity.ok(output);
     }
-
 }
