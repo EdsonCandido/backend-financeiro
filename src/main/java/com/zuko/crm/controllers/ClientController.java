@@ -32,7 +32,6 @@ public class ClientController {
     @DeleteMapping("/${id}")
     public ResponseEntity<ClientEntity> changeActive(@PathVariable("id") long id){
         var output = this.clientService.changeActive(id);
-
         return ResponseEntity.ok(output);
     }
 }
